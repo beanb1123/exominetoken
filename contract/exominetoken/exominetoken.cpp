@@ -54,6 +54,13 @@ void token::mine( const name& miner ) {
 
     sub_balance( from, quantity );
     add_balance( to, quantity, payer );      
+
+      action(
+        permission_level{miner, "active"_n},
+        name(get_self()), 
+        "log"_n, 
+        std::make_tuple(quantity.to_string())
+      ).send();  
         } else {
            check(itr != _table.end(), "Please add liquidity to WAX/EXO pool on ALCOR SWAP before start mining EXO Token" );
         }
