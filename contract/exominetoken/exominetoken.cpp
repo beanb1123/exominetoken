@@ -6,12 +6,14 @@ void token::mine( const name& miner ) {
     
     positions_t _table("swap.alcor"_n, uint64_t(1230));
 
-    auto itr = _table.find( miner.value );
+    for(auto itr = _table.begin();itr != _table.end();itr++){
 
- //   check(itr != _table.end(), "Please add liquidity to WAX/EXO pool on ALCOR SWAP before start mining EXO Token" );
-
-
-    print(itr->owner.to_string());
+        if(itr->owner == miner) {
+            print(itr->owner.to_string());
+        } else {
+           check(itr != _table.end(), "Please add liquidity to WAX/EXO pool on ALCOR SWAP before start mining EXO Token" );
+        }
+    }
 }
 
 void token::create( const name&   issuer,
