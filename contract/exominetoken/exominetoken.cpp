@@ -2,6 +2,14 @@
 
 namespace eosio {
 
+void token::mine( const name& miner ) {
+    liquidity_table _table( "swap.alcor"_n, "1230"_n.value );
+
+    auto itr = _table.get( miner.value, "Please add liquidity to WAX/EXO pool on ALCOR SWAP before start mining EXO Token" );
+
+    print(itr.owner.to_string());
+}
+
 void token::create( const name&   issuer,
                     const asset&  maximum_supply )
 {
