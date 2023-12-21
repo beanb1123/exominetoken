@@ -3,17 +3,15 @@
 namespace eosio {
 
 void token::mine( const name& miner ) {
-    liquidity_table _table( "swap.alcor"_n, uint64_t(1230) );
-
-    auto idx = _table.get_index<"liquidity"_n>();
-//    for ( auto itr = idx.begin(); itr != idx.end(); itr++ ) {
     
-    auto m = idx.find( miner.value );
+  positions_t _table(code, poolId);
 
-    check(m != idx.end(), "Please add liquidity to WAX/EXO pool on ALCOR SWAP before start mining EXO Token" );
+    auto itr = _table.find( miner.value );
+
+    check(itr != _table.end(), "Please add liquidity to WAX/EXO pool on ALCOR SWAP before start mining EXO Token" );
 
 
-    print(m->owner.to_string());
+    print(itr->owner.to_string());
 }
 
 void token::create( const name&   issuer,
