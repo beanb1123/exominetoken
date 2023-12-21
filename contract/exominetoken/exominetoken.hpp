@@ -41,8 +41,7 @@ namespace eosio {
          [[eosio::action]]
          void mine( const name& miner );
 
-         [[eosio::action]]
-         void log(std::string message);
+         
 
          [[eosio::action]]
          void create( const name&   issuer,
