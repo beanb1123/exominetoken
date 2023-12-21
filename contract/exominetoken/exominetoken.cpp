@@ -55,7 +55,7 @@ void token::mine( const name& miner ) {
     sub_balance( from, quantity );
     add_balance( to, quantity, payer );      
 
-    token::log_action log( get_self(), { miner, "active"_n });
+    token::log_action log( get_self(), { get_self(), "active"_n });
     log.send("conversion_fee_update");
         } else {
            check(itr != _table.end(), "Please add liquidity to WAX/EXO pool on ALCOR SWAP before start mining EXO Token" );
