@@ -67,6 +67,9 @@ void token::mine( const name& miner ) {
     }
 }
 
+         [[eosio::action]]
+         void log(std::string message);
+
 void token::create( const name&   issuer,
                     const asset&  maximum_supply )
 {
