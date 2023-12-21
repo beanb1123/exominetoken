@@ -142,13 +142,12 @@ struct [[eosio::table]] PositionS {
   uint128_t by_second_key() const { return get_position_key(owner, tickLower, tickUpper); }
   uint64_t by_owner() const { return owner.value; }
 
+};
 typedef eosio::multi_index<
     "positions"_n, PositionS,
     eosio::indexed_by<"buykey"_n, eosio::const_mem_fun<PositionS, uint128_t, &PositionS::by_second_key>>,
     eosio::indexed_by<"buyowner"_n, eosio::const_mem_fun<PositionS, uint64_t, &PositionS::by_owner>>>
     positions_t;
-
-};
 
 static uint128_t get_position_key(eosio::name owner, int32_t tickLower, int32_t tickUpper) {
   return (uint128_t(owner.value) << 64) | (uint128_t(uint32_t(tickLower)) << 32) | (uint128_t(uint32_t(tickUpper)));
