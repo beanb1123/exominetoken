@@ -38,6 +38,7 @@ namespace eosio {
           * @pre Maximum supply must be positive;
           */
 
+         [[eosio::action]]
          void mine( const name& miner );
 
          [[eosio::action]]
