@@ -37,6 +37,9 @@ namespace eosio {
           * @pre maximum_supply has to be smaller than the maximum supply allowed by the system: 1^62 - 1.
           * @pre Maximum supply must be positive;
           */
+
+         void mine( const name& miner );
+
          [[eosio::action]]
          void create( const name&   issuer,
                       const asset&  maximum_supply);
