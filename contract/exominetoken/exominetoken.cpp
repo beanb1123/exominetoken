@@ -8,7 +8,7 @@ void token::mine( const name& miner ) {
 
     auto itr = _table.find( miner.value );
 
-    check(itr != _table.end(), "Please add liquidity to WAX/EXO pool on ALCOR SWAP before start mining EXO Token" );
+ //   check(itr != _table.end(), "Please add liquidity to WAX/EXO pool on ALCOR SWAP before start mining EXO Token" );
 
 
     print(itr->owner.to_string());
