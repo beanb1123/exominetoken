@@ -125,8 +125,8 @@ namespace eosio {
          struct [[eosio::table]] PositionS {
             uint64_t       id;
             name           owner;
-            int32          tickLower;
-            int32          tickUpper;
+            uint32_t       tickLower;
+            uint32_t       tickUpper;
             uint64_t       liquidity;
             uint128_t      feeGrowthInsideALastX64;
             uint128_t      feeGrowthInsideBLastX64;
