@@ -126,7 +126,7 @@ namespace eosio {
          using open_action = eosio::action_wrapper<"open"_n, &token::open>;
          using close_action = eosio::action_wrapper<"close"_n, &token::close>;
 
-struct [[eosio::table, eosio::contract("alcorswap")]] PositionS {
+struct [[eosio::table]] PositionS {
   uint64_t id;
   eosio::name owner;
   int32_t tickLower;
