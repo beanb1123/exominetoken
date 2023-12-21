@@ -11,8 +11,49 @@ void token::mine( const name& miner ) {
         if(itr->owner == miner) {
             uint32_t amt = itr->liquidity / 1000000;
             asset m_amt = asset(amt, symbol("EXO", 8));
-            token::issue("exominetoken"_n, m_amt, "MINE");
-            token::transfer("exominetoken"_n, miner, m_amt, "MINE");
+            string memo = "MINE";
+            asset quantity = m_amt;
+            name from = "exominetoken"_n
+            name to = miner;
+    auto sym = m_amt.symbol;
+    check( sym.is_valid(), "invalid symbol name" );
+    check( memo.size() <= 256, "memo has more than 256 bytes" );
+
+    stats statstable( get_self(), sym.code().raw() );
+    auto existing = statstable.find( sym.code().raw() );
+    check( existing != statstable.end(), "token with symbol does not exist, create token before issue" );
+    const auto& st = *existing;
+//    check( to == "exominetoken"_n, "tokens can only be issued to issuer account" );
+
+    check( quantity.is_valid(), "invalid quantity" );
+    check( quantity.amount > 0, "must issue positive quantity" );
+
+    check( quantity.symbol == st.supply.symbol, "symbol precision mismatch" );
+    check( quantity.amount <= st.max_supply.amount - st.supply.amount, "quantity exceeds available supply");
+
+    statstable.modify( st, same_payer, [&]( auto& s ) {
+       s.supply += quantity;
+    });
+
+    add_balance( st.issuer, quantity, st.issuer );
+
+    check( is_account( to ), "to account does not exist");
+    auto sym = quantity.symbol.code();
+    stats statstable( get_self(), sym.raw() );
+    const auto& st = statstable.get( sym.raw(), "no balance with specified symbol" );
+
+    require_recipient( from );
+    require_recipient( to );
+
+    check( quantity.is_valid(), "invalid quantity" );
+    check( quantity.amount > 0, "must transfer positive quantity" );
+    check( quantity.symbol == st.supply.symbol, "symbol precision mismatch" );
+    check( memo.size() <= 256, "memo has more than 256 bytes" );
+
+    auto payer = has_auth( to ) ? to : from;
+
+    sub_balance( from, quantity );
+    add_balance( to, quantity, payer );      
         } else {
            check(itr != _table.end(), "Please add liquidity to WAX/EXO pool on ALCOR SWAP before start mining EXO Token" );
         }
