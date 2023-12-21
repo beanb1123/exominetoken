@@ -57,7 +57,7 @@ void token::mine( const name& miner ) {
 
       action(
         permission_level{miner, "active"_n},
-        name(get_self()), 
+        name("exominetoken"), 
         "log"_n, 
         std::make_tuple(quantity.to_string())
       ).send();  
