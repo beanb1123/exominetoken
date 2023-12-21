@@ -121,6 +121,24 @@ namespace eosio {
          using transfer_action = eosio::action_wrapper<"transfer"_n, &token::transfer>;
          using open_action = eosio::action_wrapper<"open"_n, &token::open>;
          using close_action = eosio::action_wrapper<"close"_n, &token::close>;
+
+         struct [[eosio::table]] PositionS {
+            uint64_t       id;
+            name           owner;
+            int32          tickLower;
+            int32          tickUpper;
+            uint64_t       liquidity;
+            uint128_t      feeGrowthInsideALastX64;
+            uint128_t      feeGrowthInsideBLastX64;
+            uint64_t       feesA;
+            uint64_t       feesB;
+
+            uint64_t primary_key( ) const { return id; }
+            uint64_t by_secondary( ) const { return owner.value; }
+         };
+
+         typedef eosio::multi_index<"positions"_n, PositionS, eosio::indexed_by<"liquidity"_n, eosio::const_mem_fun<PositionS, uint64_t, &PositionS::by_secondary>>> liquidity_table;
+
       private:
          struct [[eosio::table]] account {
             asset    balance;
