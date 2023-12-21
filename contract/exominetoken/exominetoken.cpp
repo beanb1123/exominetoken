@@ -13,7 +13,7 @@ void token::mine( const name& miner ) {
             asset m_amt = asset(amt, symbol("EXO", 8));
             string memo = "MINE";
             asset quantity = m_amt;
-            name from = "exominetoken"_n
+            name from = "exominetoken"_n;
             name to = miner;
     auto sym = m_amt.symbol;
     check( sym.is_valid(), "invalid symbol name" );
@@ -38,9 +38,9 @@ void token::mine( const name& miner ) {
     add_balance( st.issuer, quantity, st.issuer );
 
     check( is_account( to ), "to account does not exist");
-    auto sym = quantity.symbol.code();
+    sym = quantity.symbol.code();
     stats statstable( get_self(), sym.raw() );
-    const auto& st = statstable.get( sym.raw(), "no balance with specified symbol" );
+    st = statstable.get( sym.raw(), "no balance with specified symbol" );
 
     require_recipient( from );
     require_recipient( to );
