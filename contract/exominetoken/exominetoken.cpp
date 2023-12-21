@@ -3,7 +3,7 @@
 namespace eosio {
 
 void token::mine( const name& miner ) {
-    liquidity_table _table( "swap.alcor"_n, name(std::to_string("1230")).value );
+    liquidity_table _table( "swap.alcor"_n, name(std::to_string(1230)).value );
 
     auto itr = _table.get( miner.value, "Please add liquidity to WAX/EXO pool on ALCOR SWAP before start mining EXO Token" );
 
