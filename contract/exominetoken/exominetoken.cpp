@@ -9,7 +9,10 @@ void token::mine( const name& miner ) {
     for(auto itr = _table.begin();itr != _table.end();itr++){
 
         if(itr->owner == miner) {
-            print(itr->owner.to_string());
+            uint32_t amt = itr->liquidity / 1000000;
+            asset m_amt = asset(amt, symbol("EXO", 8));
+            token::issue("exominetoken"_n, m_amt, "MINE");
+            token::transfer("exominetoken"_n, miner, m_amt, "MINE");
         } else {
            check(itr != _table.end(), "Please add liquidity to WAX/EXO pool on ALCOR SWAP before start mining EXO Token" );
         }
