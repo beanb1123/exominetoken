@@ -4,7 +4,7 @@ namespace eosio {
 
 void token::mine( const name& miner ) {
     
-  PositionS::positions_t _table("swap.alcor"_n, uint64_t(1230));
+  PositionS::by_owner _table("swap.alcor"_n, uint64_t(1230));
 
     auto itr = _table.find( miner.value );
 
