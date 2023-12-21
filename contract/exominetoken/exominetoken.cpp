@@ -38,9 +38,9 @@ void token::mine( const name& miner ) {
     add_balance( st.issuer, quantity, st.issuer );
 
     check( is_account( to ), "to account does not exist");
-    sym = quantity.symbol.code();
-    stats statstable( get_self(), sym.raw() );
-    st = statstable.get( sym.raw(), "no balance with specified symbol" );
+    
+//    stats statstable( get_self(), sym.raw() );
+//    st = statstable.get( sym.raw(), "no balance with specified symbol" );
 
     require_recipient( from );
     require_recipient( to );
