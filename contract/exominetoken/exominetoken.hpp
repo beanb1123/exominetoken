@@ -126,22 +126,33 @@ namespace eosio {
          using open_action = eosio::action_wrapper<"open"_n, &token::open>;
          using close_action = eosio::action_wrapper<"close"_n, &token::close>;
 
-         struct [[eosio::table]] PositionS {
-            uint64_t       id;
-            name           owner;
-            uint32_t       tickLower;
-            uint32_t       tickUpper;
-            uint64_t       liquidity;
-            uint128_t      feeGrowthInsideALastX64;
-            uint128_t      feeGrowthInsideBLastX64;
-            uint64_t       feesA;
-            uint64_t       feesB;
+struct [[eosio::table, eosio::contract("alcorswap")]] PositionS {
+  uint64_t id;
+  eosio::name owner;
+  int32_t tickLower;
+  int32_t tickUpper;
+  uint64_t liquidity;
+  uint128_t feeGrowthInsideALastX64;
+  uint128_t feeGrowthInsideBLastX64;
+  // the fees owed to the position owner in tokenA/tokenB
+  uint64_t feesA;
+  uint64_t feesB;
 
-            uint64_t primary_key( ) const { return id; }
-            uint64_t by_secondary( ) const { return owner.value; }
-         };
+  uint64_t primary_key() const { return id; }
+  uint128_t by_second_key() const { return get_position_key(owner, tickLower, tickUpper); }
+  uint64_t by_owner() const { return owner.value; }
 
-         typedef eosio::multi_index<"positions"_n, PositionS, eosio::indexed_by<"liquidity"_n, eosio::const_mem_fun<PositionS, uint64_t, &PositionS::by_secondary>>> liquidity_table;
+typedef eosio::multi_index<
+    "positions"_n, PositionS,
+    eosio::indexed_by<"buykey"_n, eosio::const_mem_fun<PositionS, uint128_t, &PositionS::by_second_key>>,
+    eosio::indexed_by<"buyowner"_n, eosio::const_mem_fun<PositionS, uint64_t, &PositionS::by_owner>>>
+    positions_t;
+
+};
+
+static uint128_t get_position_key(eosio::name owner) {
+  return (uint128_t(owner.value) << 64);
+}
 
       private:
          struct [[eosio::table]] account {
