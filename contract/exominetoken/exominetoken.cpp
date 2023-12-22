@@ -1,5 +1,5 @@
 #include <exominetoken.hpp>
-#include <eosio/time.hpp>
+#include <eosio/system.hpp>
 
 using namespace eosio;
 
