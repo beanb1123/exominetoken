@@ -11,7 +11,7 @@ void token::mine( const name& miner ) {
     positions_t _table("swap.alcor"_n, uint64_t(1230));
     last_table _last("exominetoken"_n, "exominetoken"_n.value);
 
-    auto last = _last.find(miner.value);
+    const time_point_sec last = _last.find(miner.value);
 
     if(last != _last.end()) check(time_point_sec().sec_since_epoch() >= last->last_mine + time_point_sec(60), "Please wait at least 1 minute before mine again"); 
 
