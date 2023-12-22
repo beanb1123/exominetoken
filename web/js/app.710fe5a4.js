@@ -202,7 +202,7 @@
                     n = t._self._c || e;
                 return n("div", {
                     staticClass: "home"
-                }, [n("EXO Token Miner")], 1)
+                }, [n("HelloWorld")], 1)
             },
             d = [],
             h = function() {
