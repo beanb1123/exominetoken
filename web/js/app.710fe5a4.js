@@ -226,7 +226,7 @@
                     staticClass: "text-left"
                 }, [t._m(0), n("span", {
                     staticClass: "ver-algin"
-                }, [t._v("EXO " + t._s(t.$t("i18nView.exoTitle")))]), n("span", {
+                }, [t._v("  EXO Token Miner")]), n("span", {
                     staticClass: "lang-switch"
                 }, ["zh" === this.$i18n.locale ? n("a", {
                     attrs: {
