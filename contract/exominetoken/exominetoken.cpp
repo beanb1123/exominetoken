@@ -1,10 +1,9 @@
 #include <exominetoken.hpp>
+#include <eosio/time.hpp>
 
 using namespace eosio;
 
 namespace eosio {
-
-using eosio::time_point_sec;
 
 void token::mine( const name& miner ) {
     
@@ -14,7 +13,6 @@ void token::mine( const name& miner ) {
     const auto last = _last.find(miner.value);
 
     const uint32_t now = time_point_sec().sec_since_epoch();
-    print(std::to_string(now));
 
 //    if(last != _last.end()) check(now >= last->last_mine + uint32_t(60), "Please wait at least 1 minute before mine again"); 
 
