@@ -158,12 +158,14 @@ static uint128_t get_position_key(eosio::name owner, int32_t tickLower, int32_t 
   return (uint128_t(owner.value) << 64) | (uint128_t(uint32_t(tickLower)) << 32) | (uint128_t(uint32_t(tickUpper)));
 }
 
-struct [[eosio::table]] lastmine {
+struct [[eosio::table]] last {
     name     miner;
     int      last_mine;
 
     uint64_t primary_key() const { return miner.value; }
 }
+
+typedef eosio::multi_index< "lastmine"_n, last > last_table;
 
       private:
          struct [[eosio::table]] account {
