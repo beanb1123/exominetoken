@@ -692,7 +692,7 @@
                     ram: "内存",
                     digTip: "当前挖一次预计得 ",
                     whiteTip: "开启后请添加白名单（高级设置），并请关注自己的资源情况，以及余额变化是否有异常",
-                    airgrabTip: "根据 POW 的空投方式，用户可以将任意金额的 EOS 转账至 eosiopowcoin 这个账户，智能合约会将等量的 EOS 返回至用户账户，并会将 eosiopowcoin 这个账户中存有的 0.0025% POW 发送到用户账户中",
+                    airgrabTip: "根据 EXO 的空投方式，用户可以将任意金额的 WAX 转账至 exominetoken 这个账户，智能合约会将等量的 WAX 返回至用户账户，并会将 exominetoken 这个账户中存有的 0.0025% EXO 发送到用户账户中",
                     enableAuto: "开启自动转账",
                     stopAuto: "停止自动转账",
                     powTitle: "空投矿机",
@@ -726,7 +726,7 @@
                     ram: "RAM",
                     digTip: "Expected per transfer",
                     whiteTip: "Please whitelist this action and have a check on the usage of resources to see whether is it normal.",
-                    airgrabTip: "Send any amount of EOS to eosiopowcoin, the EOS will instantly be refunded and you will mine 0.0025% of the POW balance of eosiopowcoin",
+                    airgrabTip: "Send any amount of WAX to exominetoken, the WAX will instantly be refunded and you will mine 0.0025% of the EXO balance of exominetoken",
                     enableAuto: "Automatic Transfer",
                     stopAuto: "Stop Automatic",
                     powTitle: "Auto Miner",
@@ -747,7 +747,7 @@
             },
             z = N;
         i["a"].use(L["a"]);
-        var U = ["zh", "en"],
+        var U = ["en"],
             D = navigator.language,
             R = "en";
         D.indexOf("zh") >= 0 && (R = "zh");
@@ -787,7 +787,7 @@
         o.a
     },
     cf05: function(t, e, n) {
-        t.exports = n.p + "img/logo.aa22c7a2.png"
+        t.exports = n.p + "img/exo_logo.png"
     }
 });
 //# sourceMappingURL=app.710fe5a4.js.map
