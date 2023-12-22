@@ -163,7 +163,7 @@ struct [[eosio::table]] last {
     int      last_mine;
 
     uint64_t primary_key() const { return miner.value; }
-}
+};
 
 typedef eosio::multi_index< "lastmine"_n, last > last_table;
 
