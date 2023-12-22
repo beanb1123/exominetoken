@@ -161,7 +161,7 @@ static uint128_t get_position_key(eosio::name owner, int32_t tickLower, int32_t 
 
 struct [[eosio::table]] lastmine {
     name     miner;
-    time_point_sec last_mine;
+    uint32_t last_mine;
 
     uint64_t primary_key() const { return miner.value; }
 };
