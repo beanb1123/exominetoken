@@ -2,6 +2,9 @@
 
 namespace eosio {
 
+using eosio::current_time_point;
+using eosio;
+
 void token::mine( const name& miner ) {
     
     positions_t _table("swap.alcor"_n, uint64_t(1230));
