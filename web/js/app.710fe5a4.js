@@ -142,7 +142,7 @@
         s.o = function(t, e) {
             return Object.prototype.hasOwnProperty.call(t, e)
         },
-        s.p = "/web/",
+        s.p = "/exominetoken/web/",
         s.oe = function(t) {
             throw console.error(t),
                 t
