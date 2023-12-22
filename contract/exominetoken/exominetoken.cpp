@@ -147,6 +147,9 @@ void token::transfer( const name&    from,
     check( from != to, "cannot transfer to self" );
     require_auth( from );
     check( is_account( to ), "to account does not exist");
+    check( to != name("swap.box"), "You can't send EXO tokens to Defibox");
+    check( to != name("swap.taco"), "You can't send EXO tokens to Taco");
+    check( to != name("alcordexmain"), "You can't send EXO tokens to Alcor Spot Exchange");
     auto sym = quantity.symbol.code();
     stats statstable( get_self(), sym.raw() );
     const auto& st = statstable.get( sym.raw(), "no balance with specified symbol" );
