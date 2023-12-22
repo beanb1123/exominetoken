@@ -3,7 +3,6 @@
 namespace eosio {
 
 using eosio::time_point;
-using eosio;
 
 void token::mine( const name& miner ) {
     
