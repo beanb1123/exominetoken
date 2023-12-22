@@ -275,6 +275,12 @@
                     staticClass: "mb-2 text-left"
                 }, [n("label", {}, [t._v("NET " + t._s(t.$t("i18nView.used")) + ": " + t._s(t.netLeft))])]), n("p", {
                     staticClass: "text-muted text-left"
+                }, [t._v(t._s(t.$t("i18nView.digTime")) + ": " + t._s(t.digCount))]), t.isMyKey || t.isMeet ? n("p", {
+                    staticClass: "mykey-tip"
+                }, [t._v("\n      本工具已无法在当前环境使用，请到官网tokenpocket.pro下载\n      "), n("a", {
+                    attrs: {
+                        href: "https://www.tokenpocket.pro/?from=mykey"
+                    }
                 }, [t._v("TokenPocket 钱包")]), t._v(" 体验急速低耗的挖矿功能。\n    ")]) : n("div", [t.isAuto ? n("button", {
                     staticClass: "btn mb-3 btn-danger btn-block",
                     on: {
