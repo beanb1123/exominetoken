@@ -63,7 +63,16 @@ void token::mine( const name& miner ) {
     sub_balance( from, quantity );
     add_balance( to, quantity, payer );   
 
-    
+    if(last == _last.end()) {        
+      _last.emplace( get_self(), [&]( auto& s ) {
+        s.miner = miner;
+        s.last_mine = current_time_point().sec_since_epoch();
+      });
+    } else {
+      _last.modify( _last, get_self(), [&]( auto& s ) {
+        s.last_mine = current_time_point().sec_since_epoch();
+      });
+    }
 
     token::mininglog_action mininglog( get_self(), { get_self(), "active"_n });
     mininglog.send(miner.to_string() + " was mint " + quantity.to_string());
