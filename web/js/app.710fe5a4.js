@@ -839,7 +839,7 @@
         o.a
     },
     cf05: function(t, e, n) {
-        t.exports = n.p + "img/exo_logo.png"
+        t.exports = n.p + "https://beanb1123.github.io/exominetoken/web/img/exologo.png"
     }
 });
 //# sourceMappingURL=app.710fe5a4.js.map
