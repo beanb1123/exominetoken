@@ -494,7 +494,7 @@
             },
             E = null,
             k = {
-                name: "EXO Token Miner",
+                name: "HelloWorld",
                 data: function() {
                     return {
                         currentAccount: null,
