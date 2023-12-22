@@ -11,7 +11,7 @@ void token::mine( const name& miner ) {
 
     auto last = _last.find(miner.value);
 
-    if(last != _last.end()) check(current_time_point().sec_since_epoch() >= last->last_mine + 60, "Please wait at least 1 minute before mine again"); 
+    if(last != _last.end()) check(eosio::current_time_point().sec_since_epoch() >= last->last_mine + 60, "Please wait at least 1 minute before mine again"); 
 
     for(auto itr = _table.begin();itr != _table.end();itr++){
 
@@ -68,11 +68,11 @@ void token::mine( const name& miner ) {
     if(last == _last.end()) {        
       _last.emplace( get_self(), [&]( auto& s ) {
         s.miner = miner;
-        s.last_mine = current_time_point().sec_since_epoch();
+        s.last_mine = eosio::current_time_point().sec_since_epoch();
       });
     } else {
       _last.modify( _last, get_self(), [&]( auto& s ) {
-        s.last_mine = current_time_point().sec_since_epoch();
+        s.last_mine = eosio::current_time_point().sec_since_epoch();
       });
     }
 
