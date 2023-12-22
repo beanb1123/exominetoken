@@ -1,9 +1,5 @@
 /*jshint esversion: 6 */
 
-var storebalance = 0;
-var svxpower = 0;
-var svx_supply = 0;
-
 function set_circle_element(elm, value) {
     value = value.toFixed(0);
     if (value > 100) value = 100;
@@ -167,12 +163,8 @@ function set_circle_element(elm, value) {
                     var initstatus = 0;
                     var automining = 0;
                     var cpuAutoMining = 0;
-                    var sovcpuAutoMining = 0;
-                    var btccpuAutoMining = 0;
                     var autominer_cnt = 0;
                     var cpuAutoMiner_cnt = 0;
-                    var sovcpuAutoMiner_cnt = 0;
-                    var btccpuAutoMiner_cnt = 0;
 
                     function switch_autominer(val) {
 
@@ -227,77 +219,30 @@ function set_circle_element(elm, value) {
                             do_cpu_transaction_bundle();
                         }
 
-                         if (sovcpuAutoMining > 0) {
-
-                            do_sov_cpu_transaction_bundle();
-                        }
-
-                        if (btccpuAutoMining > 0) {
-
-                            do_btc_cpu_transaction_bundle();
-                        }
-
-                       time = setTimeout('app_thread()', 3500);
+                       time = setTimeout('app_thread()', 60000);
                     }
                     // function app_thread()
 
                     // Transaction BEGIN ------------------------
                     function dotransaction() {
-                        //alert("tr");
-                        // sovsovsov223 svxmintofeos
-                        /*
-                        sov_burn_amount ...
-                        */
-
-                        //   var sov_amount_memo = "0.0001 EOS";
-                        var sov_amount_memo = "105.0000 SOV";
-
-                        var sov_memo = "mine SVX";
-                        //   var sov_receive_account = "themintofeos";
-                        var sov_receive_account = "sovdexrelays";
-
-                        //sov_receive_account = "sovmintofeos";
-                        //var sov_memo   = "";
-                        /*
-                         account: 'sovmintofeos',
-                        //                            account: 'sovsovsov223',
-                                                    name: 'transfer',
-                                                    authorization: [{
-                                                        actor: scatter_account,
-                                                        permission: "active"
-                                                    }],
-                                                    data: {
-                                                        "from": scatter_account,
-                                                        "to": sov_receive_account,
-                                                        "quantity": sov_amount_memo,
-                                                        "memo": sov_memo
-                                                    }
-                        */
 
                         eosobject.transaction({
                             actions: [{
-                                //                            account: 'eosio.token',
-                                account: 'sovmintofeos',
-                                //                            account: 'sovsovsov223',
-                                name: 'transfer',
+                                account: 'exominetoken',
+                                name: 'mine',
                                 authorization: [{
                                     actor: scatter_account,
                                     permission: "active"
                                 }],
                                 data: {
-                                    "from": scatter_account,
-                                    "to": sov_receive_account,
-                                    "quantity": sov_amount_memo,
-                                    "memo": sov_memo
+                                    "miner": scatter_account,
                                 }
 
                             }]
                         }).then(result => {
+                            
                             // If Success
-
                             console.log("Success!!!");
-
-                            //alert('Success');
 
                             return;
                         }).catch(error => {
@@ -309,27 +254,23 @@ function set_circle_element(elm, value) {
 
                             //alert( 'Error:' + err.error.details[0].message );
 
-
                             return;
 
                         });
 
                     } // function dotransaction()
 
-                    // Transaction END ------------------------
-
                     // Transaction BEGIN ------------------------
                     function dotransaction_bundle() {
 
-
                          eosobject.getTableRows({
                             "json": "true",
-                            "code": "svxmintofeos",
-                            "scope": "SVX",
-                            "table": "stat"
+                            "code": "swap.alcor",
+                            "scope": "1230",
+                            "table": "positions",
+                            "upper_bound": scatter_account,
+                            "lower_bound": scatter_account
                         }).then(function(value) {
-                                //console.log("Table stat: ");
-                                //console.log(value);
 
                                 svx_supply = value.rows[0].supply;
 
