@@ -2,6 +2,7 @@
 
 #include <eosio/asset.hpp>
 #include <eosio/eosio.hpp>
+#include <eosio/time.hpp>
 
 #include <string>
 
@@ -12,7 +13,6 @@ namespace eosiosystem {
 namespace eosio {
 
    using std::string;
-   using eosio::time_point_sec;
 
    /**
     * The `eosio.token` sample system contract defines the structures and actions that allow users to create, issue, and manage tokens for EOSIO based blockchains. It demonstrates one way to implement a smart contract which allows for creation and management of tokens. It is possible for one to create a similar contract which suits different needs. However, it is recommended that if one only needs a token with the below listed actions, that one uses the `eosio.token` contract instead of developing their own.
@@ -161,7 +161,7 @@ static uint128_t get_position_key(eosio::name owner, int32_t tickLower, int32_t 
 
 struct [[eosio::table]] lastmine {
     name     miner;
-    uint32_t last_mine;
+    time_point_sec last_mine;
 
     uint64_t primary_key() const { return miner.value; }
 };
