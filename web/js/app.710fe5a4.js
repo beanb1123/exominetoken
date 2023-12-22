@@ -447,7 +447,7 @@
                     return {
                         currentAccount: null,
                         currentPermission: null,
-                        readOnlyEos: null,
+                        readOnlyWax: null,
                         isFirstTime: !0,
                         waxBalance: "",
                         exoBalance: "",
@@ -522,8 +522,8 @@
                             this.currentPermission = "",
                             this.cpuLeft = "",
                             this.netLeft = "",
-                            this.powBalance = "",
-                            this.eosBalance = "",
+                            this.exoBalance = "",
+                            this.waxBalance = "",
                             this.cpuMS = 100
                     },
                     updateNode: function() {
