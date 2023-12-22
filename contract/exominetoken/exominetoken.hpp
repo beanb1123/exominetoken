@@ -2,7 +2,7 @@
 
 #include <eosio/asset.hpp>
 #include <eosio/eosio.hpp>
-#include <eosio/time.hpp>
+#include <eosio/system.hpp>
 
 #include <string>
 
