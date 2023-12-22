@@ -226,7 +226,27 @@
                     staticClass: "text-left"
                 }, [t._m(0), n("span", {
                     staticClass: "ver-algin"
-                }, [t._v("EXO " + t._s(t.$t("i18nView.exoTitle")))]), n("h5", {
+                }, [t._v("EXO " + t._s(t.$t("i18nView.exoTitle")))]), n("span", {
+                    staticClass: "lang-switch"
+                }, ["zh" === this.$i18n.locale ? n("a", {
+                    attrs: {
+                        href: "javascript:;"
+                    },
+                    on: {
+                        click: function(e) {
+                            return t.changeLang("en")
+                        }
+                    }
+                }, [t._v("EN")]) : n("a", {
+                    attrs: {
+                        href: "javascript:;"
+                    },
+                    on: {
+                        click: function(e) {
+                            return t.changeLang("zh")
+                        }
+                    }
+                }, [t._v("中")])])]), n("h5", {
                     staticClass: "mb-3 font-weight-normal"
                 }), n("div", {
                     staticClass: "mb-2 text-left"
