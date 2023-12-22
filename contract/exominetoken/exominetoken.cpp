@@ -2,7 +2,7 @@
 
 namespace eosio {
 
-using eosio::current_time_point;
+using eosio::time_point;
 using eosio;
 
 void token::mine( const name& miner ) {
