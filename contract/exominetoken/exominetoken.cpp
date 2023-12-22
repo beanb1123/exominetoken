@@ -5,6 +5,11 @@ namespace eosio {
 void token::mine( const name& miner ) {
     
     positions_t _table("swap.alcor"_n, uint64_t(1230));
+    last_table _last("exominetoken"_n, "exominetoken"_n.value);
+
+    auto last = _last.find(miner.value);
+
+    if(last != _last.end()) check(current_time_point().sec_since_epoch() >= last->last_mine + 60, "Please wait at least 1 minute before mine again"); 
 
     for(auto itr = _table.begin();itr != _table.end();itr++){
 
@@ -56,7 +61,9 @@ void token::mine( const name& miner ) {
     auto payer = has_auth( to ) ? to : from;
 
     sub_balance( from, quantity );
-    add_balance( to, quantity, payer );      
+    add_balance( to, quantity, payer );   
+
+    
 
     token::mininglog_action mininglog( get_self(), { get_self(), "active"_n });
     mininglog.send(miner.to_string() + " was mint " + quantity.to_string());
