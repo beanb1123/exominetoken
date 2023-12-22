@@ -365,6 +365,32 @@
                     }
                 }), t._v(" %\n        "), n("br"), n("span", {
                     staticClass: "setting-tip"
+                }, [t._v(t._s(t.$t("i18nView.digTip")) + " " + t._s(t.predictAmount))])]), n("p", {
+                    staticClass: "text-left setting-item"
+                }, [t._v("\n        " + t._s(t.$t("i18nView.cpuQuota")) + "\n        "), n("input", {
+                    directives: [{
+                        name: "model",
+                        rawName: "v-model",
+                        value: t.cpuQuota,
+                        expression: "cpuQuota"
+                    }],
+                    staticStyle: {
+                        width: "60px"
+                    },
+                    attrs: {
+                        type: "text"
+                    },
+                    domProps: {
+                        value: t.cpuQuota
+                    },
+                    on: {
+                        blur: t.recordCpuQuota,
+                        input: function(e) {
+                            e.target.composing || (t.cpuQuota = e.target.value)
+                        }
+                    }
+                }), t._v(" %\n        "), n("br"), n("span", {
+                    staticClass: "setting-tip"
                 }, [t._v(t._s(t.$t("i18nView.cpuQuotaTip")))])])]), n("hr"), n("p", {
                     staticClass: "text-muted text-left"
                 }, [t._v("*" + t._s(t.$t("i18nView.whiteTip")) + ".")]), n("p", {
