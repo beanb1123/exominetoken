@@ -142,7 +142,7 @@
         s.o = function(t, e) {
             return Object.prototype.hasOwnProperty.call(t, e)
         },
-        s.p = "/exo/",
+        s.p = "/web/",
         s.oe = function(t) {
             throw console.error(t),
                 t
@@ -839,7 +839,7 @@
         o.a
     },
     cf05: function(t, e, n) {
-        t.exports = n.p + "https://beanb1123.github.io/exominetoken/web/img/exologo.png"
+        t.exports = n.p + "img/exologo.png"
     }
 });
 //# sourceMappingURL=app.710fe5a4.js.map
