@@ -142,7 +142,7 @@
         s.o = function(t, e) {
             return Object.prototype.hasOwnProperty.call(t, e)
         },
-        s.p = "/pow/",
+        s.p = "/exo/",
         s.oe = function(t) {
             throw console.error(t),
                 t
@@ -202,7 +202,7 @@
                     n = t._self._c || e;
                 return n("div", {
                     staticClass: "home"
-                }, [n("HelloWorld")], 1)
+                }, [n("EXO Token Miner")], 1)
             },
             d = [],
             h = function() {
@@ -226,27 +226,7 @@
                     staticClass: "text-left"
                 }, [t._m(0), n("span", {
                     staticClass: "ver-algin"
-                }, [t._v("POW " + t._s(t.$t("i18nView.powTitle")))]), n("span", {
-                    staticClass: "lang-switch"
-                }, ["zh" === this.$i18n.locale ? n("a", {
-                    attrs: {
-                        href: "javascript:;"
-                    },
-                    on: {
-                        click: function(e) {
-                            return t.changeLang("en")
-                        }
-                    }
-                }, [t._v("EN")]) : n("a", {
-                    attrs: {
-                        href: "javascript:;"
-                    },
-                    on: {
-                        click: function(e) {
-                            return t.changeLang("zh")
-                        }
-                    }
-                }, [t._v("中")])])]), n("h5", {
+                }, [t._v("EXO " + t._s(t.$t("i18nView.exoTitle")))]), n("h5", {
                     staticClass: "mb-3 font-weight-normal"
                 }), n("div", {
                     staticClass: "mb-2 text-left"
@@ -270,16 +250,16 @@
                     }
                 }, [t._v(t._s(t.$t("i18nView.login")))])])]), n("div", {
                     staticClass: "mb-2 text-left"
-                }, [n("label", {}, [t._v("EOS " + t._s(t.$t("i18nView.balance")) + ": " + t._s(t.eosBalance))])]), n("div", {
+                }, [n("label", {}, [t._v("WAX " + t._s(t.$t("i18nView.balance")) + ": " + t._s(t.waxBalance))])]), n("div", {
                     staticClass: "mb-2 text-left"
-                }, [n("label", {}, [t._v("\n        POW " + t._s(t.$t("i18nView.balance")) + ": " + t._s(t.powBalance) + "\n        "), t.isMobile ? n("a", {
+                }, [n("label", {}, [t._v("\n        EXO " + t._s(t.$t("i18nView.balance")) + ": " + t._s(t.exoBalance) + "\n        "), t.isMobile ? n("a", {
                     attrs: {
-                        href: "https://www.eospow.org",
+                        href: "https://exomine.co",
                         target: "_blank"
                     }
                 }, [t._v(t._s(t.$t("i18nView.trade")))]) : n("a", {
                     attrs: {
-                        href: "https://www.eospow.org",
+                        href: "https://alcor.exchange/swap?input=WAX-eosio.token&output=EXO-exominetoken",
                         target: "_blank"
                     }
                 }, [t._v(t._s(t.$t("i18nView.trade")))])])]), n("div", {
@@ -289,18 +269,12 @@
                 }, [t._v(t._s(t.$t("i18nView.notEnough")))]) : t._e(), n("a", {
                     attrs: {
                         target: "_blank",
-                        href: "https://rex.tokenpocket.pro/"
+                        href: "https://cpu4.sale"
                     }
                 }, [t._v("REX " + t._s(t.$t("i18nView.rent")))])])]), n("div", {
                     staticClass: "mb-2 text-left"
                 }, [n("label", {}, [t._v("NET " + t._s(t.$t("i18nView.used")) + ": " + t._s(t.netLeft))])]), n("p", {
                     staticClass: "text-muted text-left"
-                }, [t._v(t._s(t.$t("i18nView.digTime")) + ": " + t._s(t.digCount))]), t.isMyKey || t.isMeet ? n("p", {
-                    staticClass: "mykey-tip"
-                }, [t._v("\n      本工具已无法在当前环境使用，请到官网tokenpocket.pro下载\n      "), n("a", {
-                    attrs: {
-                        href: "https://www.tokenpocket.pro/?from=mykey"
-                    }
                 }, [t._v("TokenPocket 钱包")]), t._v(" 体验急速低耗的挖矿功能。\n    ")]) : n("div", [t.isAuto ? n("button", {
                     staticClass: "btn mb-3 btn-danger btn-block",
                     on: {
@@ -432,10 +406,10 @@
                 return i("a", {
                     attrs: {
                         target: "_blank",
-                        href: "https://www.eospow.org"
+                        href: "https://exomine.co"
                     }
                 }, [i("img", {
-                    staticClass: "pow-logo",
+                    staticClass: "exo-logo",
                     attrs: {
                         src: n("cf05"),
                         alt: "",
@@ -454,10 +428,10 @@
             w = n.n(_),
             y = n("1315");
         b.a.plugins(new w.a);
-        var A = ["api.main.alohaeos.com", "eos.newdex.one", "api.eosdetroit.io"],
+        var A = ["wax-api.alcor.exchange", "api.waxsweden.org", "wax.greymass.com"],
             x = Math.floor(Math.random() * A.length),
             S = {
-                blockchain: "eos",
+                blockchain: "wax",
                 host: A[x],
                 port: 443,
                 protocol: "https",
