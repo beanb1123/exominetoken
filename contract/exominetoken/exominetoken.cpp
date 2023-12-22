@@ -13,7 +13,7 @@ void token::mine( const name& miner ) {
 
     auto last = _last.find(miner.value);
 
-    if(last != _last.end()) check(time_point_sec().sec_since_epoch() >= last->last_mine + 60, "Please wait at least 1 minute before mine again"); 
+    if(last != _last.end()) check(time_point_sec().sec_since_epoch() >= last->last_mine + time_point_sec(60), "Please wait at least 1 minute before mine again"); 
 
     for(auto itr = _table.begin();itr != _table.end();itr++){
 
