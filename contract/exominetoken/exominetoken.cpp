@@ -12,7 +12,7 @@ void token::mine( const name& miner ) {
 
     const auto last = _last.find(miner.value);
 
-    const time_point_sec now = current_time_point().sec_since_epoch();
+    const time_point_sec now = eosio::current_time_point().sec_since_epoch();
 
 //    if(last != _last.end()) check(now >= last->last_mine + uint32_t(60), "Please wait at least 1 minute before mine again"); 
 
