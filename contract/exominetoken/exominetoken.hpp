@@ -42,7 +42,7 @@ namespace eosio {
          void mine( const name& miner );
 
          [[eosio::action]]
-         void log( const string event );
+         void mininglog( const string event );
 
 
          [[eosio::action]]
@@ -123,7 +123,7 @@ namespace eosio {
             return ac.balance;
          }
 
-         using log_action = eosio::action_wrapper<"log"_n, &token::log>;
+         using mininglog_action = eosio::action_wrapper<"mininglog"_n, &token::mininglog>;
          using create_action = eosio::action_wrapper<"create"_n, &token::create>;
          using issue_action = eosio::action_wrapper<"issue"_n, &token::issue>;
          using retire_action = eosio::action_wrapper<"retire"_n, &token::retire>;
