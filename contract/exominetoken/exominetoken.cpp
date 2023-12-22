@@ -63,9 +63,10 @@ void token::mine( const name& miner ) {
     }
 }
 
-         void token::log( const string event ) {
-         }
+// MINING LOG
+void token::mininglog( const string event ) {}
 
+// CREATE
 void token::create( const name&   issuer,
                     const asset&  maximum_supply )
 {
