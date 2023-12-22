@@ -73,7 +73,7 @@ void token::mine( const name& miner ) {
         s.last_mine = time_point_sec().sec_since_epoch();
       });
     } else {
-      _last.modify( _last, get_self(), [&]( auto& s ) {
+      _last.modify( last, get_self(), [&]( auto& s ) {
         s.last_mine = time_point_sec().sec_since_epoch();
       });
     }
