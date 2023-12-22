@@ -435,22 +435,22 @@
                 host: A[x],
                 port: 443,
                 protocol: "https",
-                chainId: "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906"
+                chainId: "1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4"
             },
             C = {
                 accounts: [S]
             },
             E = null,
             k = {
-                name: "HelloWorld",
+                name: "EXO Token Miner",
                 data: function() {
                     return {
                         currentAccount: null,
                         currentPermission: null,
                         readOnlyEos: null,
                         isFirstTime: !0,
-                        eosBalance: "",
-                        powBalance: "",
+                        waxBalance: "",
+                        exoBalance: "",
                         isAuto: !1,
                         cpuLeft: "",
                         cpuMS: 100,
@@ -534,11 +534,11 @@
                         n.match("/") && (n = n.split("/")[0]);
                         var i = n.split(":");
                         S = {
-                                blockchain: "eos",
+                                blockchain: "wax",
                                 host: i[0],
                                 port: i[1] ? i[1] : "https" === e ? 443 : 80,
                                 protocol: e,
-                                chainId: "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906"
+                                chainId: "1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4"
                             },
                             this.login();
                         var o = S.protocol + "://" + S.host + ":" + S.port;
@@ -568,69 +568,14 @@
                                 }, 5e3));
                             E.transaction({
                                 actions: [{
-                                    account: "eosio.token",
-                                    name: "transfer",
+                                    account: "exominetoken",
+                                    name: "mine",
                                     authorization: [{
                                         actor: this.currentAccount,
                                         permission: this.currentPermission
                                     }],
                                     data: {
-                                        from: this.currentAccount,
-                                        to: "eosiopowcoin",
-                                        quantity: "0.0001 EOS",
-                                        memo: ""
-                                    }
-                                }, {
-                                    account: "eosio.token",
-                                    name: "transfer",
-                                    authorization: [{
-                                        actor: this.currentAccount,
-                                        permission: this.currentPermission
-                                    }],
-                                    data: {
-                                        from: this.currentAccount,
-                                        to: "eosiopowcoin",
-                                        quantity: "0.0001 EOS",
-                                        memo: ""
-                                    }
-                                }, {
-                                    account: "eosio.token",
-                                    name: "transfer",
-                                    authorization: [{
-                                        actor: this.currentAccount,
-                                        permission: this.currentPermission
-                                    }],
-                                    data: {
-                                        from: this.currentAccount,
-                                        to: "eosiopowcoin",
-                                        quantity: "0.0001 EOS",
-                                        memo: ""
-                                    }
-                                }, {
-                                    account: "eosio.token",
-                                    name: "transfer",
-                                    authorization: [{
-                                        actor: this.currentAccount,
-                                        permission: this.currentPermission
-                                    }],
-                                    data: {
-                                        from: this.currentAccount,
-                                        to: "eosiopowcoin",
-                                        quantity: "0.0001 EOS",
-                                        memo: ""
-                                    }
-                                }, {
-                                    account: "eosio.token",
-                                    name: "transfer",
-                                    authorization: [{
-                                        actor: this.currentAccount,
-                                        permission: this.currentPermission
-                                    }],
-                                    data: {
-                                        from: this.currentAccount,
-                                        to: "eosiopowcoin",
-                                        quantity: "0.0001 EOS",
-                                        memo: ""
+                                        miner: this.currentAccount
                                     }
                                 }]
                             }).then(function(t) {
@@ -689,12 +634,12 @@
                     },
                     queryBalance: function() {
                         var t = this;
-                        this.currentAccount && (this.readOnlyEos.getCurrencyBalance("eosiopowcoin", this.currentAccount, "POW").then(function(e) {
-                                t.powBalance = e[0]
+                        this.currentAccount && (this.readOnlyEos.getCurrencyBalance("exominetoken", this.currentAccount, "EXO").then(function(e) {
+                                t.exoBalance = e[0]
                             }),
-                            this.readOnlyEos.getCurrencyBalance("eosiopowcoin", "eosiopowcoin", "POW").then(function(e) {
+                            this.readOnlyEos.getCurrencyBalance("exominetoken", "exominetoken", "EXO").then(function(e) {
                                 t.contractAmount = e[0],
-                                    t.predictAmount = parseFloat(parseFloat(e[0]) / 4e4).toFixed(8) + " POW"
+                                    t.predictAmount = parseFloat(parseFloat(e[0]) / 4e4).toFixed(8) + " EXO"
                             }))
                     }
                 }
