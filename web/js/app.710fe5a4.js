@@ -318,7 +318,7 @@
                             return t.startAuto()
                         }
                     }
-                }, [t._v(t._s(t.$t("i18nView.enableAuto")) + " 0.0001 EOS")])]), !t.isFirstTime && t.isAuto ? n("div", {
+                }, [t._v(t._s(t.$t("i18nView.enableAuto")))])]), !t.isFirstTime && t.isAuto ? n("div", {
                     staticClass: "checkbox mb-3 text-right"
                 }, [n("label", [n("input", {
                     attrs: {
@@ -779,7 +779,7 @@
                     digTip: "Expected per transfer",
                     whiteTip: "Please whitelist this action and have a check on the usage of resources to see whether is it normal.",
                     airgrabTip: "Send any amount of WAX to exominetoken, the WAX will instantly be refunded and you will mine 0.0025% of the EXO balance of exominetoken",
-                    enableAuto: "Automatic Transfer",
+                    enableAuto: "MINE",
                     stopAuto: "Stop Automatic",
                     powTitle: "Auto Miner",
                     error: "Error: ",
